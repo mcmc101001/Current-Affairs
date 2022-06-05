@@ -7,6 +7,44 @@
 <html lang="en">
 
 <script>
+//Random function
+    function RandomItem(arr) {
+        const RandomIndex = Math.floor(Math.random()*arr.length);
+        const item = arr[RandomIndex];
+        return item;
+    }
+//Responses
+    const correct_response = ["Nice guess", "Your luck is good you should buy TOTO", "Correct :)", "nubbad nubbad", "wao very nice", "Congrats", "good guess", "nice, you possess basic comprehension and googling abilities"];
+    const incorrect_response = ["You know you can google right", "Did you even try?", "WRONG", "srsly bro?", "u fking bozo", "smh", "try harder", "put in some effort"];
+    document.addEventListener('DOMContentLoaded', function() {
+        let mcq = document.querySelectorAll('.mcq');
+        mcqnumber = mcq.length;
+        for (let j = 0; j < mcqnumber; j++){
+            var param = "q" + j;
+            let correct = document.querySelector('#' + param + ' button.correct');
+            let restwrong = document.querySelectorAll('#' + param + ' button.incorrect');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                correct.style.color = '#efefef';
+                correct.disabled = true;
+                document.querySelector('#response'+ j).innerHTML = RandomItem(correct_response);
+                    for (let i = 0; i < incorrects.length; i++){
+                    restwrong[i].style.backgroundColor = 'red';
+                    restwrong[i].style.color = '#efefef';
+                    restwrong[i].disabled = true;
+                }
+            });
+            let incorrects = document.querySelectorAll('#' + param + ' button.incorrect');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].style.color = '#efefef';
+                    incorrects[i].disabled = true;
+                    document.querySelector('#response'+ j).innerHTML = RandomItem(incorrect_response);
+                });
+            }
+        }
+    });
 </script>
 
 <head>
@@ -21,9 +59,9 @@
 
 <body>
 <!-- Navigation Bar-->
-<div class = "container-xxl">
+<div class = "container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container-xxl" margin-top=0px>
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -35,7 +73,7 @@
 <!-- Dropdown-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" disabled>
                             Local
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,7 +84,7 @@
 <!-- Dropdown-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" disabled>
                             International
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -72,9 +110,9 @@
             </div>
         </div>
     </nav>
-</div class = "container-xxl">
+</div class>
 <!-- Body -->
-    <div class = "container-xxl">
+    <div class = "container-xxl  body-container">
 <!--Content-->
         <div class = "row">
             <div class = "column content">
@@ -105,7 +143,7 @@
                     </figure>
                     <p> Singapore also said that Malaysia's disagreement to the ILS was just an excuse to reclaim airspace over southern Johor. </p>
                     <h3 id="Pasir Gudang Airspace Restriction"> Pasir Gudang Airspace Restriction </h3>
-                    <p> On 25 Dec 2018, Malaysia then published a Notice to Airmen (NOTAM), establishing a <b>permanent</b> restricted area in Pasir Gudang airspace for military use. Non-military aircraft is forbidden to enter the area from a height of approximately 600 to 2,000m. There are concerns of its impact over not just the ILS implementation. but also the normal civil aviation operations at Seletar Airport. This was also the area established for military use to Singapore, which would also raise concerns to Singapore.</p>
+                    <p> On 25 Dec 2018, Malaysia then published a Notice to Airmen (NOTAM), establishing a <b>permanent</b> restricted area in Pasir Gudang airspace for military use. Non-military aircraft is forbidden to enter the area from a height of approximately 600 to 2,000m. There are concerns of its impact over not just the ILS implementation. but also the normal civil aviation operations at Seletar Airport. This was also the closest ever an area established for military use was to Singapore, which would also raise concerns.</p>
                     <figure>
                         <img src="images/seletar-ils/pasir-gudang.png" width="800px">
                         <figcaption>Fig 4. Restricted Area Established by Malaysia</figcaption>
@@ -116,6 +154,35 @@
                     <li>
                     <a target="none" href="https://www.straitstimes.com/asia/se-asia/malaysias-transport-minister-allow-room-for-experts-to-settle-dispute-over-new-seletar">Video explaining ILS dispute (in article)</a>
                     </li>
+                    <h2 id="Quiz">Quiz</h2>
+                    <div class="section">
+                        <hr>
+                        <!-- TODO: Add multiple choice question here -->
+                        <div class="mcq" id="q0">
+                            <h3>What type of electromagnetic wave does the ILS use?</h3>
+                            <div><button class = "correct">Radio Waves</button></div>
+                            <div><button class = "incorrect">Microwave</button></div>
+                            <div><button class = "incorrect">Infrared</button></div>
+                            <div><button class = "incorrect">Visible Light</button></div>
+                            <p id = "response0"></p>
+                        </div>
+                        <div class="mcq" id="q1">
+                            <h3>Approximately how far is Pasir Gudang Port from Seletar Airport?</h3>
+                            <div><button class = "incorrect">30m</button></div>
+                            <div><button class = "incorrect">300m</button></div>
+                            <div><button class = "correct">3km</button></div>
+                            <div><button class = "incorrect">30km</button></div>
+                            <p id = "response1"></p>
+                        </div>
+                        <div class="mcq" id="q2">
+                            <h3>Who was Malaysia's PM during this incident?</h3>
+                            <div><button class = "incorrect">Ismail Sabri Yaakob</button></div>
+                            <div><button class = "correct">Mahathir Mohamad</button></div>
+                            <div><button class = "incorrect">Muhyiddin Yassin</button></div>
+                            <div><button class = "incorrect">Najib Razak</button></div>
+                            <p id = "response2"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!-- TOC -->
@@ -132,6 +199,7 @@
                             </li>
                             <li class="toc-hover"><a href="#Aftermath">Aftermath</a></li>
                             <li class="toc-hover"><a href="#Additional information">Additional information</a></li>
+                            <li class="toc-hover"><a href="#Quiz">Quiz</a>
                         </ul>
                     </nav>
                 </div>

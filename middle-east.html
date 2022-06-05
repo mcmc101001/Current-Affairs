@@ -7,6 +7,44 @@
 <html lang="en">
 
 <script>
+//Random function
+    function RandomItem(arr) {
+        const RandomIndex = Math.floor(Math.random()*arr.length);
+        const item = arr[RandomIndex];
+        return item;
+    }
+//Responses
+    const correct_response = ["Nice guess", "Your luck is good you should buy TOTO", "Correct :)", "nubbad nubbad", "wao very nice", "Congrats", "good guess", "nice, you possess basic comprehension and googling abilities"];
+    const incorrect_response = ["You know you can google right", "Did you even try?", "WRONG", "srsly bro?", "u fking bozo", "smh", "try harder", "put in some effort"];
+    document.addEventListener('DOMContentLoaded', function() {
+        let mcq = document.querySelectorAll('.mcq');
+        mcqnumber = mcq.length;
+        for (let j = 0; j < mcqnumber; j++){
+            var param = "q" + j;
+            let correct = document.querySelector('#' + param + ' button.correct');
+            let restwrong = document.querySelectorAll('#' + param + ' button.incorrect');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                correct.style.color = '#efefef';
+                correct.disabled = true;
+                document.querySelector('#response'+ j).innerHTML = RandomItem(correct_response);
+                    for (let i = 0; i < incorrects.length; i++){
+                    restwrong[i].style.backgroundColor = 'red';
+                    restwrong[i].style.color = '#efefef';
+                    restwrong[i].disabled = true;
+                }
+            });
+            let incorrects = document.querySelectorAll('#' + param + ' button.incorrect');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].style.color = '#efefef';
+                    incorrects[i].disabled = true;
+                    document.querySelector('#response'+ j).innerHTML = RandomItem(incorrect_response);
+                });
+            }
+        }
+    });
 </script>
 
 <head>
@@ -23,7 +61,7 @@
 <!-- Navigation Bar-->
 <div class = "container-xxl">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container-xxl">
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -72,22 +110,222 @@
             </div>
         </div>
     </nav>
-</div class = "container-xxl">
+</div>
 <!-- Body -->
-    <div class = "container-xxl">
+    <div class = "container-xxl  body-container">
 <!--Content-->
         <div class = "row">
             <div class = "column content">
 <!--Intro-->
                 <div class = "intro">
-                    <h1 class="display-2"> A Rough History of the Middle East </h1>
-                    <p class="lead word-wrap"> The Middle East is a highly volatile region that has underwent many disputes over the years. It is also the origins of many religions, giving it major geopolitical significance. </p>
+                    <h1 class="display-2"> A Rough Summary of the Middle East </h1>
+                    <p class="lead word-wrap"> The Middle East is fascinating region. Human civilisation started in Mesopotamia, located in modern day Iraq. The Middle East is also the birthplace of major religions, including Judaism, Christianity and Islam. The modern Middle East is a region fraught with conflict, with multiple major players each having different interests, often conflicting with one another, resulting in a complicated but interesting situation.</p>
                 </div>
 <!--Deets-->
                 <div class = "deets">
-                    <h2 id="Background"> Background </h2>
-                    <p> </p>
+                    <h2 id="Preface"> Preface </h2>
+                    <p> After writing this, I realised its fked, shit is too messy and unclear but its too late welp. Go ahead and torture yourself if you want to.</p>
+                    <h2 id="Brief Timeline"> Brief Timeline </h2>
+                    <div class="timeline">
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>Post WWI</h2>
+                                <h3> Levant </h3>
+                                <p>After WWI, the Ottoman Empire, which emcompassed Turkey and a large portion of the Middle East, collpased and was subsequently partitioned between the UK and France. Modern-day Syria and Lebanon went under French control while modern-day Israel and Palestine went under British control.</p>
+                                <h3> Saudi Arabia </h3>
+                                <p>Meanwhile, oil reserves were found in Saudi Arabia by the US. This led to rapid development of infrastructure within Saudi Arabia, resulting in a particular construction company becoming extremely rich. The company was owned by an individual named Mohammed bin Laden (father of like 54, including Osama bin Laden).</p>
+                                <h3> Palestine </h3>
+                                <p> Around this time, Zionism started to become on the rise. Jews believed that Judaism was more than just a religion, and that Jews deserved a nation of their own, especially after facing much persecution and antisemitism. Many Jews started immigrating to their ancient homeland in Palestine. However, as more Jews entered Palestine, tensions between Jews and Arabs flared, resulting in violence. </p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>Post WWII</h2>
+                                <h3> Syria and Lebanon </h3>
+                                <p>Syria and Lebanon then gained independence from France, partially due to WWII (France was occupied by Germany and weakened by the war). Lebanon was a multi-sectarian country, with 3 main religions: (i) Maronite Christians; (ii) Sunni Muslims (mainly in the coastal area); and (iii) Shia Muslisms (mainly in the south and east). </p>
+                                <h3> Palestine </h3>
+                                <p> As the Holocaust drove more Jews into Palestine, violence between Jews and Arabs escalated while international support for a Jewish state grew. Eventually, the British decided to partition Palestine into Israel and Palestine, with Jerusalem being a special international zone. However, Arab nations saw this as Westerners attempting to take their land and invaded Israel (Arab-Israeli war) in order to establish a unified Arab Palestine. However, Israel actually won the war and ended up with more land than it started with.</p>
+                                <h3> Iran </h3>
+                                <p> During WWII, the UK and USSR invaded Iran, who was a neutral party in the war, in order to secure supply lines from the Allied Forces to the USSR (via modern-day Azerbaijan) and also British oil fields in Iran (The UK had previously obtained exclusive rights to oil in Iran, with a small percentage of profits (think 17%?) given to Iran), while at the same time limiting German influence in Iran. During this period, tensions between Iran and the UK rose, especially as the US and Saudi Arabia reached an agreement for a 50-50 profit sharing.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>1953: Iranian coup</h2>
+                                <h3> Iran</h3>
+                                <p> In 1951, Iran's parliament voted to nationalise its oil industry, and a nationalist PM Mohammad Mosaddegh was elected. In response, the UK got other oil purchasers to boycott Iran's oil and impose economic sanctions on Iran, while also imposing a blockade, resulting in Iran's economy declining and public resentment to build up. Mosaddegh became more reliant on emergency powers to maintain peace. To make matters worse, the communist Tudeh party in Iran decided to support Mosaddegh, in hopes that Mosaddegh would institute communism (Mosaddegh didn't support the Tudeh, it was more of an alliance out of convenience). The US became more involved as a result, and decided to execute a coup to overthrow Mosaddegh. </p>
+                                <p> In 1953, as the economy further declined and public resentment rose to an all time high, Mosaddegh submitted a referendum to dissolve the parliament, essentially giving himself and his cabinet complete power while causing the Shah (king) to lose his influence. his caused the Shah, backed by the CIA, to agree on a coup, and dismissed Mosaddegh and install some general in power, but was rejected by Mosaddegh. The Shah fled overseas, while Mosaddegh's supporters, including Tudeh party members took to the streets in protest. Mosaddegh believed that the coup was unsuccessful.</p>
+                                <p>However, the general, alongside the CIA and other Shah supporters hired infiltrators posing as Tudeh party members begain to organise a "communist revolution", while a second group of infiltrators were hired to mobilise protest against communism. Soon, real Tudeh members and civilians who were afraid of a communist takeover joined the protests and clashed. This allowed the military to join in and beat back the communists, joining the people to storm government buildings, eventually overthrowing the government of Mosaddegh. The Shah returned too Iran and gained power.</p>
+                                <p> The US provided lots of aid to Iran, including helping it to build nuclear infrastructure (a form of diplomacy called nuclear diplomacy). However, the Shah's rule was harsh, with secret police being deployed to crack down on political dissent. The Shah grew close to the US and developed Iran into a secular country with many westernisation policies, angering the Islamic conservatives and clergy.
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>1967: Six Day War</h2>
+                                <h3> Israel </h3>
+                                <p> The war was sparked when Israel conducted air strikes on Egypt after Egypt closed the Straits of Tiran to Israeli vessels and mobilised its military on the border with Israel. A ceasefire was eventually signed, but by then Israel had occupied the territories of the West Bank, Gaza Strip, Golan Heights (from Syria) and Sinai Peninsula (from Egypt, which was later returned like 20yrs after).</p>
+                                <figure>
+                                    <img src="images/middle-east/sixdaywar.jpeg" width=800px>
+                                    <figcaption>Fig 1. Territories Occupied by Israel.
+                                </figure>
+                                <p> The Palestinian held territories of the West Bank and Gaza Strip are now controlled by Israel, with Palestinian refugees evacuating to neighbouring countries such as Jordan, Syria and Lebanon. The Palestinian Liberation Organization (PLO), which is recognised as the representative of the Palestinian people, began conducting attacks against Israel from bases in Jordan. The PLO grew in power within Jordan and wanted to overthrow the Jordanian monarchy (Black September), resulting in the PLO relocating to Lebanon.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>1975: Lebanese Civil War</h2>
+                                <h3> Lebanon </h3>
+                                <p> As the PLO settled in Lebanon and used it as a base to launch attacks on Israel. Naturally, the Lebanese government mistrusted the PLO (especially cos the PLO does not have a good track record (Black September)), as it was building "a state within a state", undermining the Lebanese government's rule. The PLO's attacks also resulted in Lebanon being caught in the crossfire between the PLO and Israel, and as a result clashes between Palestinian factions and Maronite Christian militias. This shattered the balance of power in multi-secterian Lebanon, resulting in different sects forming militias and joining the conflict. Shit is complicated af, but basically Syria intervened and also invaded. In 1978 (and more seriously in 1982), Israel also intervened and invaded southern Lebanon to dislodge the PLO from its bases, displacing many people. Due to this conflict, Shia Muslim militias bonded together and formed a group called Hezbollah, which was supported by Iran, to oppose Israel's invasion.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>1979:Soviet-Afghan war, Islamic Revolution</h2>
+                                <h3> Afghanistan </h3>
+                                <p> In 1979, the Afghan communist government called on the USSR's help to fight the Islamic insurgency. During this period, individuals like Osama bin Laden (with lots of resources due to his rich father) and Zarqawi joined the Islamic mujahideen to fight the Soviets, developing extremist views and forming al-Qaeda, a Sunni Muslim organsiation whose cause is to protect Islam from enemies (secular/foreign influences). Ironically during the Soviet-Afghan war, the US sent many weapons to asisst the mujahideen in fighting the USSR due to the Cold War.</p>
+                                <h3> Iran </h3>
+                                <p> A series of events led to Iran's Shah being overthrown and a religious government being setup headed by Ayatollah Khomeini. The Shah escaped to the US and the US rejected Iran's demands for the Shah's return to be prosecuted. This led to a hostage situation at the US Embassy in Tehran lasting 444 days. Iran's ideology also naturally results in its hatred of the US and Israel (US backing previous governments and basically defiling Islam, while Israel is a US ally and someone who is occupying Palestinian territory).</p>
+                                <p>This sudden formation of the Islamic Republic of Iran changed the dynamics of the region. Saudi Arabia had always been the leaders of the Islamic world, with Mecca and Medina being located in Saudi Arabia. However, the rise of Iran and its ambitions to spread its ideology, potentially resulting in similar revolutions against other Middle Eastern countries resulted in a sorta Cold War in the Middle East. (yes Iran kinda hates the entire region just like how I hate everyone) It is also important to note that Saudi Arabia has a Sunni Muslim majority population while Iran has a Shia Muslim majority population (recall Hezbollah point from Lebanese civil war).</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>1980-1989:Iran-Iraq war</h2>
+                                <p> Iraq (a secular country led by dictator Saddam Hussein) invaded Iran in 1980, in order to prevent the revolution from spreading (Ayatollah Khomeini once lived in exile in Iraw and tried to overthrow ) while also trying to snag some of Iran's juicy oil, which is concentrated in the Khuzestan province bordering Iraq. Saudi Arabia and various Gulf nations formed the Gulf Cooperation Council in 1981 and supported Iraq when Iran was gaining the upper hand in the war. This was also when oil tankers started getting targeted frequently, with the Iraqi military attacking Iranian tankers while Iran attacked oil tankers belong to Gulf nations supporting Iraq. The US supported Iraq and stepped in to protect its oil supply, while Iran utilised its geography and planted sea mines across the Strait of Hormuz (narrow waterway leading into the Persian Gulf). A US frigate struck an Iranian mine and the US responded with a military operation. Notably, the US shot down an Iranian civilian plane while on escort duty in the region, claiming that it was mistook for a fighter aircraft, killing all 290 onboard. The war ended with a UN-brokered ceasefire.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>Timeline break</h2>
+                                <p> OK i promise it will get shorter from here no more long ass paras.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>1988</h2>
+                                <h3>Iran</h3>
+                                <p> Iran forms a unit called the Quds Force to spread its ideology and advance Iran's interests by backing groups outside of Iran (Hezbollah was backed by the predecessor of Quds Force). Hezbollah bombed the US embassy in Beirut, Lebanon back in 1983.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>1989:Taif Agreement</h2>
+                                <h3>Lebanon</h3>
+                                <p> The Lebanese civil war ended with the signing of the Taif Agreement, which divided the parliament and various positions and ministries about among the different sects (e.g. the President is a Maronite, PM a Sunni and Speaker of Parliament a Shia). This resulted in corruption as each sect abused their power and tried to funnel funds into their sects. </p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content" id="Oslo Accords">
+                                <h2>1993: Oslo Accords</h2>
+                                <h3>Israel</h3>
+                                <p> In 1993, the Oslo Accords were signed, giving the Palestinian territories of the West Bank and Gaza Strip some autonomy. It created the Palestinian Authority which was serve as the government over Palestinian territories. This was opposed by extremists of both sides, with Hamas, an organisation that is part of the PLO, carrying out bombings and attacks against Israel. Meanwhile, right-wing Jewish protested against the deal and called Israel's then PM Rabin a Nazi. Rabin was later assassinated by a right wing extremist opposing the deal.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>2001</h2>
+                                <h3>US</h3>
+                                <p> September 11. Afterwards, the US invaded Afghanistan to overthrow the Taliban, while Osama fled to Pakistan.</p>
+                                <p> Another disaster occurred soon after September 11 - I was born. </p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>2003</h2>
+                                <h3>Iraq</h3>
+                                <p> The US invaded Iraq in 2003, over claims that Saddam Hussein possessed weapons of mass destruction (WMD) and had links to al-Qaeda (these were never proven, instead it is likely the US invaded Iraq to rally the nation for a victory after September 11, and also for Iraq's oil). Iraq's government was toppled, but this created a power vacuum. The US had to fight an insurgency of Islamic militias, including members of Iraq's dissolved military and jihadists (including Zarqawi) opposing the US invasion. Zarqawi forms a jihadist group who later forms an alliance with al-Qaeda, forming al-Qaeda in Iraq. Meanwhile the militants were also used as proxies by Saudi Arabia and Iran, who armed Sunni and Shia militias respectively.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>2006</h2>
+                                <h3>Palestine</h3>
+                                <p> Palestinian elections were held and Hamas wins the election over the previously ruling Fatah. The US, Russia, UN and EU suspended foreign assistance to Palestine in opposition to Hamas (who is more aggresive towards Israel and is viewed as a detriment to the peace process between Israel and Palestine) being elected. (Ironically, the western democracies are protesting an election result). Tensions worsened as Fatah and Hamas built my security forces and a plan was drew out to replace the Hamas government with a newly elected one acceptable to the international community. However, elections were not held and clashes broke out between Fatah and Hamas. This resulted in a split in Palestinian territories in 2007, with the Gaza Strip controlled by Hamas and the West Bank controlled by Fatah. Hamas is also supported and funded by Iran, who also opposes Israel.</p>
+                                <p> Meanwhile, Hezbollah and Israel fought a war. Lebanon's position in this becomes quite awkward, as Hezbollah is not just a rogue militant group but also a political party that holds seats in Lebanon's parliament. Lebanon did not approve Hezbollah's attacks, but could not allow Israel to invade. Eventually the war ends with a ceasefire and southern Lebanon is now controlled by the Lebanese Armed Forces and a UN peacekeeping force (United Nations Interim Force in Lebanon, which Malaysia and Indonesia frequently deploys troops to)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>2011</h2>
+                                <h3>Pakistan</h3>
+                                <p> Osama killed by USN (US Navy) special operations forces.</p>
+                                <h3>Iraq</h3>
+                                <p> US forces withdraw from Iraq. This left a Shia majority government government who fought against Sunni militias trying to undermine the Shia government.</p>
+                                <h3>Arab Spring</h3>
+                                <p> In 2010, some dude in Tunisia set himself on fire after his stuff was confiscated by the authorities for not having a vendor permit. This sparked the Tunisian Revolution, with protests against poor standards of living and lack of political freedom resulting in the ousting of Tunisia's President and democratisation of Tunisia. The success of Tunisia's revolution later led to protests spreading to many other countries in the Arab world, with some leading to change of government or even civil war. This also set the stage for a Saudi-Iran proxy conflict, given that the Saudi Arabians represented a status-quo while the Iranians backed those seeking to overthrow the governments across the Arab world.</p>
+                                <h3>Syrian Civil War</h3>
+                                <p> This is a clusterfk by itself. In 2011, shots were fired towards peaceful protesters. This soon escalated into a civil war as rebels began firing back and some Syrian Army personnel defected to join the rebels, which also included jihadists. Meanwhile, the Kurdish people (an ethnic minority group found mainly in Turkey and Syria) informally secedes from Syrian President Bashar al-Assad's rule and form an independent democratic republic known as Rojava. This civil war also became a site of the Iran-Saudi proxy war. Iran started supplying weapons to Assad and even got Hezbollah directly involved in the fight. Meanwhile, Saudi Arabia and other nations backed the rebels to counter Iran's influence. Assad released jihadists from prisons to join the rebels, in hopes that it would dissuade international support for the Syrian rebels. Later in 2013, Assad deployed chemical weapons, killing many civilians, resulting in condemnation from around the world. In response, the US threatened to conduct a military strike against the Assad regime, but eventually backed down and instead deployed CIA personnel to train Syrian rebels against Assad. (It is important to note here that Russia is a close ally for Syria and has been supplying military aid to the Assad regime.)</p>
+                                <h3> Iran</h3>
+                                <p> The US sanctions Iran's petrochemical industry for the first time, over Iran's nuclear programme which the US claims are for developing weapons, resulting in Iran threatening to close off the Strait of Hormuz. The Strait became once again a tense region with major assets being deployed into the area and large scale military exercises being held. </p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>2013</h2>
+                                <h3>Syria and Iraq</h3>
+                                <p> al-Qaeda in Iraq's new leader, Abu Bakr al-Baghdadi declares that his group would be taking control of all al-Qaeda forces in Iraq and Syria. al-Qaeda in Iraq rebrands to become the extremist Islamic group Islamic State of Iraq and Syria (ISIS), and is now at odds with al-Qaeda. ISIS' goal is to create an Islamic caliphate, imposing Sharia law and expanding it to the entire world. With this goal in mind, ISIS sweeps across Iraq, controlling huge swaths of land within days. ISIS's success was in part due to US intervention in toppling the Assad regime, resulting in a weak local force which is unable to withstand the many warlords and terrorists fighting for power. ISIS was also seen by Sunni Muslims as a better, if not tolerable alternative to the Shia majority government, and thus did not meet much resistance. As ISIS gained ground, the US led an international coalition (Combined Joint Task Force - Operation Inherent Resolve) against ISIS (US journalist James Foley was beheaded in response to US-led airstrikes). Iran also backed Iraq in its fight against ISIS, in a rare de facto collaboration with the US. In Syria, Assad actually released jihadists from prison, in hopes to "corrupt" the rebels with jihadists, thus making it less likely for countries to provide support to the rebels. With the rise of ISIS, the US' focus indeed shifted towards ISIS rather than that of Assad. Meanwhile, the US also backed Kurdish forces in Syria, who also fought against ISIS trying to push into its territory, providing air support and eventually weapons in 2017. ISIS gradually loses power, but starts launching multiple terrorist attacks abroad. This also resulted in many foreign fighters who had come to the Middle East to support ISIS in its battle to return their home countries. Coupled with ISIS' media usage and propaganda, this has inspired many lone wolf attacks around the world.</p>
+                                <h3>Yemen</h3>
+                                <p> Another country affected by the Arab Spring. A Shia group called the Houthis, backed by Iran (another Iranian proxy group), pick up arms against the Yemeni government and took over the capital. Worried by a growing Iranian influence at its borders, Saudi Arabia led a coalition of manily Gulf Cooperation Council nations to conduct military operations against Houthis. The US provided logistical support to the Saudi operation, which has been condemned for its indiscriminate bombing, resulting in death of civilians and damage against important civilian infrastructure such as hospitals and seaports.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>2015</h2>
+                                <h3>Syria</h3>
+                                <p> Russia becomes directly involved in the Syrian civil war, launching air and missile strikes on rebels, ISIS as well as Kurdish forces to back the Assad regime.</p>
+                                <h3>Iran</h3>
+                                <p> In 2015, the Iran nuclear deal (more formally known as the Joint Comprehensive Plan of Action or JCPOA) was signed. Under this deal signed by the US, UK, Russia, France, China, Germany, and the EU, some UN, EU and US sanctions on Iran would be lifted in exchange for Iran limiting its nuclear programme.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>2016</h2>
+                                <h3>Syria</h3>
+                                <p> Russian bombardment of Syrian city Aleppo allowed Assad forces to encircle and lay siege against the rebels. This resulted in lots of civilian casualties. Meanwhile, Turkey launched a military offensive in Syria targetted at both ISIS and the Kurdish forces (Turkey has long had a conflict with many Kurdish insurgent groups within Turkey, particularly the Kurdistan Workers' Party (PKK). Turkey fears that the new Kurdish republic of Rojava would be a safe haven for PKK terrorists). The US backed Turkish efforts against ISIS, but was criticised for allowing Turkey (a US ally and NATO member) to attack Kurdish forces who were also backed by the US against ISIS.</p>
+                                <p> Trump was also elected in the same year, with a election campaign pledging to bring US troops back home. However, later in 2017, in response to further chemical attacks against civilians by the Assad regime, Trump ordered a cruise missile strike on Shayrat Airbase in Syria, marking the first direct US attack against the Assad regime.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>2018</h2>
+                                <h3>Iran</h3>
+                                <p> Trump pulls out from the Iran nuclear deal (JCPOA), saying that sanctions prove more effective in limiting Iran's power and addressing Iran's proxies across the Middle East. This resulted in Iran continuing its nuclear programme. This also marked a worsening of US-Iran tensions, with Iran threatening to close off the Strait of Hormuz.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>2019</h2>
+                                <h3>Syria</h3>
+                                <p> Turkey had long wanted to establish a "safe zone" between its borders with the Rojava part of Syria, to keep the Kurdish forces away its borders. Turkey also said that the "safe zone" would be used to station Syrian refugees who had fled to Turkey following the Syrian civil war, which attracted support from its domestic audience as Turkey's declining economy was being blamed on the influx of refugees. However, with the US presence in Rojava to support the Kurdish forces in ISIS, Turkey could not launch an offensive. However in Mar, the last major city held by ISIS, Baghuz, falls to Kurdish forces. With the fall of ISIS, the US interest in Kurdish forces declined. In Oct, Turkey launched its military offensive into Rojava. Later, US President Trump announced that some US troops would be withdrawn from Syria, effectively abandoning the Kurdish fighters to themselves. A bipartisan House of Representatives vote condemned Trump for this move, which would also send the wrong message to US allies as well as risk the rise of ISIS again as ISIS prisons in Rojava become unguarded due to the Turkish offensive. Eventually, a ceasefire was brokered and the "safe zone" was established. Near this period, ISIS leader al-Baghdadi committed suicide after being cornered by US forces.</p>
+                                <h3>Iran</h3>
+                                <p> In 2019, there were several incidents of oil tankers being attacked in the region near the Strait of Hormuz. The US claimed that it had downed Iranian drones, while Iran seized many tankers. The International Maritime Security Construct (IMSC) was formed by the US to "counter threats to maritime navigation and global trade to secure freedom of navigation" of the Persian Gulf, Gulf of Oman, Gulf of Aden and the Red Sea. Away from the Strait of Hormuz, Iraqi militias backed by Iran attacked US bases and the US Embassy in Iraq, while the US retalitated with airstrikes on those militias.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container left">
+                            <div class="timeline-content">
+                                <h2>2020</h2>
+                                <h3>Iran</h3>
+                                <p> The US conducted a drone strike at Baghdad International Airport in Iraq, killing Iran's Quds Force Commander Qassem Soleimani, widely considered as the second most powerful man in Iran, with his command over the vast networks of Iranian proxy groups in Lebanon, Palestine, Yemen, Iraq and Syria. The motivation for the assassination was that Soleimani allegedly plotted an imminent attack and that the strike was necessary to stop the attack, but later said that it was a response to the previous series of attacks against US interests. In response, Iran launched ballistic missiles towards airbases hosting US anti-ISIS coalition troops, resulting in 110 suffering from traumatic brain injuries. Rocket attacks against bases hosting US personnel. Iran's Islamic Revolutionary Guard Corps Navy vessels also harassed US vessels. Iran also issued an arrest warrant for Trump for ordering the assassination of Soleimani. Israel, a close ally of the US is also part of this overall conflict. Israeli and Iranian vessels have always been attacked at sea and the other nation is blamed for the attack. Retired Israeli military intelligence chief said that Israel was involved in Soleimani's assassination. Israel has also been accused of cyber attacks against Iran's nuclear facilities.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-container right">
+                            <div class="timeline-content">
+                                <h2>Present (2022)</h2>
+                                <h3>Iran</h3>
+                                <p> JCPOA is currently being negotiated under the new Biden administration.</p>
+                                <h3>Lebanon</h3>
+                                <p> Economy is struggling. Syrian civil war resulted in investors pulling out of the region, and Lebanon tried to introduce taxes and inflate prices to salvage the economy. They even wanted to introduce a tax for using Whatsapp. They also had to call upon other countries for firefighting aid against forest fires, but had functional anti-riot water cannons (really shows their priorities).</p>
+                                <h3>Yemen</h3>
+                                <p>The Houthi Group regularly launches drone attacks towards Saudi Arabia and the United Arab Emirates, both of whom are part of the coalition backing the Yemeni government. </p>
+                                <h3>Iraq</h3>
+                                <p>Iraqi militias regularly launch missiles towards bases hosting US personnel as well as the US Embassy in Baghdad. ISIS continues to operate in Syria and Iraq but are less active.</p>
+                            </div>
+                        </div>
+                    </div>
                     <h2 id="Additional information">Additional Information</h2>
+                    <li>
+                    <a target="none" href="https://youtube.com/playlist?list=PLRvts3dIxdlaQ2eqsQl93hgsjdjShEBgZ">Good Youtube Playlist</a>
+                    </li>
                 </div>
             </div>
 <!-- TOC -->
@@ -96,7 +334,7 @@
                     <strong class = "d-block border-bottom"> On this page </strong>
                     <nav id = "TableOfContents">
                         <ul>
-                            <li class="toc-hover"><a href="#Background">Background</a></li>
+                            <li class="toc-hover"><a href="#Brief Timeline">Brief Timeline</a></li>
                             <li class="toc-hover"><a href="#Additional information">Additional information</a></li>
                         </ul>
                     </nav>

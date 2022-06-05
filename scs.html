@@ -7,6 +7,44 @@
 <html lang="en">
 
 <script>
+//Random function
+    function RandomItem(arr) {
+        const RandomIndex = Math.floor(Math.random()*arr.length);
+        const item = arr[RandomIndex];
+        return item;
+    }
+//Responses
+    const correct_response = ["Nice guess", "Your luck is good you should buy TOTO", "Correct :)", "nubbad nubbad", "wao very nice", "Congrats", "good guess", "nice, you possess basic comprehension and googling abilities"];
+    const incorrect_response = ["You know you can google right", "Did you even try?", "WRONG", "srsly bro?", "u fking bozo", "smh", "try harder", "put in some effort"];
+    document.addEventListener('DOMContentLoaded', function() {
+        let mcq = document.querySelectorAll('.mcq');
+        mcqnumber = mcq.length;
+        for (let j = 0; j < mcqnumber; j++){
+            var param = "q" + j;
+            let correct = document.querySelector('#' + param + ' button.correct');
+            let restwrong = document.querySelectorAll('#' + param + ' button.incorrect');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                correct.style.color = '#efefef';
+                correct.disabled = true;
+                document.querySelector('#response'+ j).innerHTML = RandomItem(correct_response);
+                    for (let i = 0; i < incorrects.length; i++){
+                    restwrong[i].style.backgroundColor = 'red';
+                    restwrong[i].style.color = '#efefef';
+                    restwrong[i].disabled = true;
+                }
+            });
+            let incorrects = document.querySelectorAll('#' + param + ' button.incorrect');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].style.color = '#efefef';
+                    incorrects[i].disabled = true;
+                    document.querySelector('#response'+ j).innerHTML = RandomItem(incorrect_response);
+                });
+            }
+        }
+    });
 </script>
 
 <head>
@@ -23,7 +61,7 @@
 <!-- Navigation Bar-->
 <div class = "container-xxl">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container-xxl">
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -72,22 +110,157 @@
             </div>
         </div>
     </nav>
-</div class = "container-xxl">
+</div>
 <!-- Body -->
-    <div class = "container-xxl">
+    <div class = "container-xxl  body-container">
 <!--Content-->
         <div class = "row">
             <div class = "column content">
 <!--Intro-->
                 <div class = "intro">
                     <h1 class="display-2"> South China Sea Dispute </h1>
-                    <p class="lead word-wrap"> The South China Sea (SCS). </p>
+                    <p class="lead word-wrap"> The South China Sea (SCS) is a region of multiple overlapping territorial claims, and many countries have been taking provocative measures and escalating the tensions in the region. </p>
                 </div>
 <!--Deets-->
                 <div class = "deets">
                     <h2 id="Background"> Background </h2>
-                    <p> </p>
-                    <h2 id="Additional information">Additional Information</h2>
+                    <figure>
+                        <img src="images/scs/scs-iho.png" width=800px>
+                        <figcaption>Fig 1. South China Sea Limits as Defined by International Hydrographic Organization.
+                    </figure>
+                    <p> The SCS is an important body of water as it is very rich in natural resources, including oil, natural gas and fish. Furthermore, approximately 30% of global maritime trade passes through the South China Sea.</p>
+                    <h3 id="UNCLOS"> UNCLOS </h3>
+                    <p> To better understand the territorial disputes in the SCS, we first need to understand maritime laws. The United Nations Convention on the Law of the Sea (UNCLOS) stipulates that countries are entitled to up to 12 nautical miles (nm) of territorial waters from its coast (be it mainland or island), and 200nm of Exclusive Economic Zone (EEZ). Territorial waters are essentially waters which the state has jurisdiction over and are free to set any laws, while the EEZ grants the state the exclusive right to all natural resources (e.g. fish, gas, oil) in the area.</p>
+                    <p>[Side note: Some stuff not related to SCS but are interesting: <a target="none" href="https://en.wikipedia.org/wiki/Cod_Wars">Fishing rights related dispute</a> and <a target="none" href="https://en.wikipedia.org/wiki/Peanut_Hole">Holes in EEZ being abused.</a>]</p>
+                    <p> Other than islands, there are other maritime features, namely rocks and low-tide elevations. What differentiates rocks from islands is that rocks are unable to sustain human habituation or economic activity. Thus, rocks are not entitled to an EEZ. A low-tide elevation, as its names suggests, is submerged during high-tide, and is not entitled to any territorial waters or EEZ (unless close to an island or land, then it can be considered as extension to the island/land). </p>
+                    <div class="test">
+                        <div class="imgContainer">
+                            <figure>
+                                <img src="images/scs/island.png" width=800px>
+                                <figcaption>Fig 2. Maritime Zones of Islands.
+                            </figure>
+                        </div>
+                        <div class="imgContainer">
+                            <figure>
+                                <img src="images/scs/rock.png" width=800px>
+                                <figcaption>Fig 3. Maritime Zones of Rocks.
+                            </figure>
+                        </div>
+                        <div class="imgContainer">
+                            <figure>
+                                <img src="images/scs/low-tide elevation.png" width=800px>
+                                <figcaption id="innocent passage">Fig 4. Maritime Zones of Low-tide Elevations.
+                            </figure>
+                        </div>
+                    </div>
+                    <p>Ok one last thing. Article 17 of UNCLOS grants all states to the right of innocent passage through territorial waters. Definition of innocent passage as outlined in UNCLOS is kinda long, but essentially must be continuous and expeditious, so don't do weird shit like zig zag around in the water, conduct military exercise or stopping for no reason.
+                    <figure>
+                        <img src="images/scs/unclos-innocent-passage.png" width=800px>
+                        <figcaption>Fig 5. UNCLOS Section Regarding Innocent Passage.
+                    </figure>
+                    <h3 id="Nine-dash Line"> Nine-dash Line </h3>
+                    <p> So here comes the dispute. China argues that it has a historical claim to the SCS. After World War II, Japan lost control over the region and China (under Kuomintang, basically the old government of the Republic of China which fled to Taiwan) published a map with literally eleven dashes on it. Later the Kuomintang fled to Taiwan after the Chinese Civil War and the People's Republic of China (we will just use as China from now on) kept the map, removed two dashes due to agreements with Vietnam, thus creating today's nine-dash line. China later added a final dash to include Taiwan, thus creating the ten-dash line.</p>
+                    <figure>
+                        <img src="images/scs/baidu.png" width=800px>
+                        <figcaption>Fig 6. Ten-dash Line as Seen from Baidu Maps.
+                    </figure>
+                    <p> China and Taiwan both claim the nine-dash line as their territory, but much of the conflict in the SCS arises due to China asserting its claims over the SCS using the nine-dash line. This nine-dash line has brought China into dispute against Malaysia, Indonesia, Brunei, Vietnam, and the Philippines.</p>
+                    <h3 id="Disputed Island Groups"> Disputed Island Groups </h3>
+                    <p> There are two major islands groups within this disputed area, the Spratly Islands and the Paracel Islands. The Paracel Islands is disputed by China and Vietnam, and they both fought a battle over it in 1974, in which China emerged victorious and ever since China controlled the Paracel Islands. The Spratly Islands meanwhile is occupied by many countries, including China, Taiwan, Vietnam, the Philippines, Malaysia and Brunei.</p>
+                    <figure>
+                        <img src="images/scs/spratly-paracel.png" width=800px>
+                        <figcaption>Fig 7. Spratly and Paracel Islands.
+                    </figure>
+                    <p> China has also been promoting tourism to the Paracel Islands, slowly asserting its sovereignty over the area. </p>
+                    <h2 id="China's Militarisation"> China's Militarisation (<a target="none" href="https://storymaps.arcgis.com/stories/ed8539753d69434596cc2393a2fa0551">click for more information</a>)</h2>
+                    <p> To assert its claims over the SCS, China has been reclaiming land and building artificial islands on various reefs in the Spratly Islands. Military bases were also built, with airstrips that could accomodate fighter aircraft and anti-ship and anti-aircraft capabilities. In addition to its construction and reclamation activities, China also deploys maritime militia vessels en masse to indirectly assert its claims and to harass foreign fishing vessels. Due to their nature as civilian vessels, military action against them would be unjustified, allowing China to advance its goals in a way that does not trigger a big response.</p>
+                    <p> Not really related, but fun fact in 1999, the Philippine Navy ran aground a tanking landing ship BRP Sierra Madre on Second Thomas Shoal in the Spratly Islands to be used by the Philippine Marine Corps as an outpost. </p>
+                    <figure>
+                        <img src="images/scs/fiery-cross-reef.jpg" width=800px>
+                        <figcaption>Fig 8. Fiery Cross Reef, Part of Spratly Islands.
+                    </figure>
+                    <h2 id="2016 Permanent Court of Arbitration Ruling"> 2016 Permanent Court of Arbitration Ruling (<a target="none" href="https://amti.csis.org/failing-or-incomplete-grading-the-south-china-sea-arbitration/">click for more information</a>)</h2>
+                    <p> China and the Philippines have both ratified the UNCLOS. In 2013, the Philippines insituted arbitral proceedings against China under UNCLOS, regarding China's activities and claims over the SCS. China did not participate in the arbitration process, saying that the Philippines should instead engage in bilateral negotiations to resolve border disputes. In 2016, a tribunal appointed by the Permanent Court of Arbitration ruled that China's claim to historic rights over the SCS was contrary to UNCLOS and thus unlawful. The tribunal also ruled on the statuses of maritime features in the SCS (whether they were islands, rocks or low-tide elevations), invalidating many of China's claims. However, China has said that it would not accept the ruling. Ever since, the ruling has not done much to change China's behaviour. Meanwhile, the Philippines had elected Rodrigo Duterte as President in the same year, who was more pro-China and thus less confrontational with China. Overall, the ruling was not legally binding and did not have much effect to China's behaviour towards the SCS.</p>
+                    <h2 id="Code of Conduct"> Code of Conduct </h2>
+                    <p> China and ASEAN have been trying to negotiate a Code of Conduct for the South China Sea, with the first draft done in 2018. However, due to delays such as from the COVID-19 pandemic, negotiations are still ongoing and disagreements regarding the contents have resulted in delays, and it remains unclear when this China-ASEAN Code of Conduct would be finalised and signed.</p>
+                    <h2 id="US Freedom of Navigation Operations"> US Freedom of Navigation Operations (<a target="none" href="https://www.belfercenter.org/publication/freedom-navigation-south-china-sea-practical-guide">click for more information</a>)</h2>
+                    <p> The US conducts freedom of navigation operations (FONOP) around the world with its navy fleet, to ensure the freedom of navigation (as defined in UNCLOS) is upheld. Examples of restrictions on the freedom of navigation include unlawful claims of territorial seas (as territorial seas result in additional restrictions) and mandating prior notice or authorisation before allowing a vessel to enter territorial seas (infringing on right of <a href="#innocent passage">innocent passage</a>)</p>
+                    <p>[Side note: 1. FONOPs are not restricted to the SCS, in fact the US conducted FONOPs against unlawful claims by 19 countries in 2020. 2. Ironically, the US have not ratified UNCLOS.]</p>
+                    <h3 id="FONOPs in the SCS"> FONOPs in the SCS </h3>
+                    <p> The first type of FONOP involves states requiring vessels to provide prior notice or authorisation for innocent passage through its territorial seas. In this case, the vessel would perform innocent passage within 12nm of the maritime feature, thus protesting the requirement for prior notice, but not disputing the existence of a territorial sea.</p>
+                    <figure>
+                        <img src="images/scs/FONOP+IP.png" width=800px>
+                        <figcaption>Fig 9. FONOP Involving Innocent Passage.
+                    </figure>
+                    <p> The second type of FONOP involves states claiming territorial seas for a maritime feature inconsistent with UNCLOS (for e.g. territorial seas for a low-tide elevation). In this case, the vessel would perform activities within 12nm of the maritime feature, thus protesting the existence of a territorial sea and ensuring that the operation was not classified as innocent passage. An example of this would be at Mischief Reef, a low-tide elevation (as ruled by the 2016 tribunal) which China reclaimed land and built military infrastructure on.</p>
+                    <figure>
+                        <img src="images/scs/FONOP.png" width=800px>
+                        <figcaption>Fig 10. FONOP against Illegal Claims of Territorial Sea.
+                    </figure>
+                    </figure>
+                    <p> The third type of FONOP involves states claiming straight baselines. Baselines allow states to claim territorial seas from the baselines joining the various islands rather than from each individual island, allowing for a larger maritime zone. However, UNCLOS states that only archipelagic states may draw straight baselines, and China is not an archipelagic state. In this case, the vessel would traverse and conduct operations (to invalidate innocent passage) within waters 12nm away from each individual island, but within the straight baselines, thus protesting the straight baselines (e.g. China claims straight baselines at the Paracel Islands) but not the existence of a territorial sea at each individual island.</p>
+                    <figure>
+                        <img src="images/scs/baselines.png" width=800px>
+                        <figcaption>Fig 11. FONOP against Illegal Claims of Straight Baselines.
+                    </figure>
+                    <p> It is important to take note that by conducting FONOPs, the US are not taking a side on the territorial disputes in the SCS, but rather just against excessive maritime claims. It is also important to note that these operations are not targeted against China, but due to China's claims, most of these operations do indeed involve China's claims. An example of a FONOP that does not involved China is the 24 Dec 2020 FONOP at Con Dao Islands, a Vietnamese owned (not disputed) island group in the SCS. </p>
+                    <p> The table below lists some selected unlawful claims that the US conduct FONOPs against in the SCS. </p>
+                    <figure>
+                        <img src="images/scs/fonop types.png" width=800px>
+                        <figcaption>Fig 12. Selected List of Unlawful Claims the US Conducts FONOPs against.
+                    </figure>
+                    <h2 id="China's Coast Guard Law"> China's Coast Guard Law </h2>
+                    <p> On 22 Jan 2021, China passed a law allowing the China Coast Guard to fire at foreign vessels within "waters under the jurisdiction of China". This law of course does not include the SCS, but also other area where China have territorial disputes over (such as the Senkaku Islands in the East China Sea with Japan). However, it is definitely a cause for concern in the SCS, signalling China's increased aggresiveness in the SCS, especially given that the China Coast Guard's combat capabilities exceed that of many ASEAN navies (see this <a target="none" href="https://thediplomat.com/2017/05/china-coast-guards-new-monster-ship-completes-maiden-patrol-in-south-china-sea/#:~:text=The%20world's%20largest%20coast%20guard%20vessel%2C%20the%2012%2C000%2Dton%20China,according%20to%20Chinese%20government%20reports.">monster</a>). It is still unclear how far China would go in implementing this law, but it would certainly raise tensions in the region and complicate negotiations to the Code of Conduct in the SCS.</p>
+                    <h2 id="Philippine Acquisiton of Brahmos Missile"> Philippine Acquisiton of Brahmos Missile (<a target="none" href="https://thediplomat.com/2022/01/can-the-philippines-brahmos-missiles-really-deter-china/">click for more information</a>)</h2>
+                    <p> In Jan 2022, the Philippines became the first foreign nation to acquire the Brahmos supersonic anti-ship missile (fastest cruise missile, making it hard to evade), a major strategic asset for the Philippines, potentially having a deterrence effect to China's ambitions in the SCS. However, the Brahmos missile is majorly limited by the Philippine radar coverage, making it unable to utilise its full range of approximately 300km. The Philippines would still need to invest in better tracking and monitoring infrastructure to support the full capability of the Brahmos missile. It seems like the only saving grace of the Brahmos missile would be China's static military infrastructure in the SCS, such as the Mischief Reef, which would prove vulnerable to this missile. </p>
+                    <h2 id="Additional information">Additional Information (some duplicates with above)</h2>
+                    <li>
+                    <a target="none" href="https://www.belfercenter.org/publication/freedom-navigation-south-china-sea-practical-guide">Belfer Center Guide to FONOPs in SCS</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://storymaps.arcgis.com/stories/ed8539753d69434596cc2393a2fa0551">ArcGIS Story Maps</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://amti.csis.org/failing-or-incomplete-grading-the-south-china-sea-arbitration/">AMTI</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://thediplomat.com/2022/01/can-the-philippines-brahmos-missiles-really-deter-china/">The Diplomat</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://twitter.com/duandang">Duandang twitter</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://twitter.com/SCS_PI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">SCS Probing Initiative twitter</a>
+                    </li>
+                    <h2 id="Quiz">Quiz</h2>
+                    <div class="section">
+                        <hr>
+                        <!-- TODO: Add multiple choice question here -->
+                        <div class="mcq" id="q0">
+                            <h3>Under UNCLOS, a nation's exclusive economic zone extend up to how far from its coast?</h3>
+                            <div><button class = "incorrect">12 nautical miles</button></div>
+                            <div><button class = "incorrect">12 miles</button></div>
+                            <div><button class = "correct">200 nautical miles</button></div>
+                            <div><button class = "incorrect">200km</button></div>
+                            <p id = "response0"></p>
+                        </div>
+                        <div class="mcq" id="q1">
+                            <h3>What type of maritime feature is Mischief Reef?</h3>
+                            <div><button class = "incorrect">Island</button></div>
+                            <div><button class = "incorrect">Rock</button></div>
+                            <div><button class = "correct">Low-tide elevation</button></div>
+                            <div><button class = "incorrect">Not mentioned in 2016 PCA ruling</button></div>
+                            <p id = "response1"></p>
+                        </div>
+                        <div class="mcq" id="q2">
+                            <h3>Which country does not claim part of the Spratly Islands but have conflicts with China over the nine-dash line?</h3>
+                            <div><button class = "incorrect">Malaysia</button></div>
+                            <div><button class = "correct">Indonesia</button></div>
+                            <div><button class = "incorrect">Brunei</button></div>
+                            <div><button class = "incorrect">Taiwan</button></div>
+                            <p id = "response2"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!-- TOC -->
@@ -96,8 +269,28 @@
                     <strong class = "d-block border-bottom"> On this page </strong>
                     <nav id = "TableOfContents">
                         <ul>
-                            <li class="toc-hover"><a href="#Background">Background</a></li>
+                            <li class="toc-hover"><a href="#Background">Background</a>
+                                <ul>
+                                    <li><a href="#UNCLOS">UNCLOS</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#Nine-dash Line">Nine-dash Line</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#Disputed Island Groups">Disputed Island Groups</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-hover"><a href="#China's Militarisation">China's Militarisation</a></li>
+                            <li class="toc-hover"><a href="#2016 Permanent Court of Arbitration Ruling">2016 Permanent Court of Arbitration Ruling</a></li>
+                            <li class="toc-hover"><a href="#US Freedom of Navigation Operations">US Freedom of Navigation Operations</a>
+                                <ul>
+                                    <li><a href="#FONOPs in the SCS">FONOPs in the SCS</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-hover"><a href="#China's Coast Guard Law">China's Coast Guard Law</a></li>
+                            <li class="toc-hover"><a href="#Philippine Acquisiton of Brahmos Missile">Philippine Acquisiton of Brahmos Missile</a></li>
                             <li class="toc-hover"><a href="#Additional information">Additional information</a></li>
+                            <li class="toc-hover"><a href="#Quiz">Quiz</a></li>
                         </ul>
                     </nav>
                 </div>

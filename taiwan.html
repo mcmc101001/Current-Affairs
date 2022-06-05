@@ -7,6 +7,44 @@
 <html lang="en">
 
 <script>
+//Random function
+    function RandomItem(arr) {
+        const RandomIndex = Math.floor(Math.random()*arr.length);
+        const item = arr[RandomIndex];
+        return item;
+    }
+//Responses
+    const correct_response = ["Nice guess", "Your luck is good you should buy TOTO", "Correct :)", "nubbad nubbad", "wao very nice", "Congrats", "good guess", "nice, you possess basic comprehension and googling abilities"];
+    const incorrect_response = ["You know you can google right", "Did you even try?", "WRONG", "srsly bro?", "u fking bozo", "smh", "try harder", "put in some effort"];
+    document.addEventListener('DOMContentLoaded', function() {
+        let mcq = document.querySelectorAll('.mcq');
+        mcqnumber = mcq.length;
+        for (let j = 0; j < mcqnumber; j++){
+            var param = "q" + j;
+            let correct = document.querySelector('#' + param + ' button.correct');
+            let restwrong = document.querySelectorAll('#' + param + ' button.incorrect');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                correct.style.color = '#efefef';
+                correct.disabled = true;
+                document.querySelector('#response'+ j).innerHTML = RandomItem(correct_response);
+                    for (let i = 0; i < incorrects.length; i++){
+                    restwrong[i].style.backgroundColor = 'red';
+                    restwrong[i].style.color = '#efefef';
+                    restwrong[i].disabled = true;
+                }
+            });
+            let incorrects = document.querySelectorAll('#' + param + ' button.incorrect');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].style.color = '#efefef';
+                    incorrects[i].disabled = true;
+                    document.querySelector('#response'+ j).innerHTML = RandomItem(incorrect_response);
+                });
+            }
+        }
+    });
 </script>
 
 <head>
@@ -23,7 +61,7 @@
 <!-- Navigation Bar-->
 <div class = "container-xxl">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container-xxl">
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -72,22 +110,77 @@
             </div>
         </div>
     </nav>
-</div class = "container-xxl">
+</div>
 <!-- Body -->
-    <div class = "container-xxl">
+    <div class = "container-xxl  body-container">
 <!--Content-->
         <div class = "row">
             <div class = "column content">
 <!--Intro-->
                 <div class = "intro">
                     <h1 class="display-2"> China-Taiwan Dispute </h1>
-                    <p class="lead word-wrap"> China and Taiwan. </p>
+                    <p class="lead word-wrap"> China and Taiwan have been embroiled in conflict since the nationalist Kuomintang fled to Taiwan. China views Taiwan as an inalienable part of China, while the current Taiwanese government under the Democratic Progressive Party (DPP) is pro Taiwanese-independence.</p>
                 </div>
 <!--Deets-->
                 <div class = "deets">
                     <h2 id="Background"> Background </h2>
-                    <p> </p>
+                    <p> Following the First Sino-Japanese War, China ceded Taiwan to Japanese control. Meanwhile in China, the Chinese Civil War broke out against the Chinese Communist Party (CCP) and the Kuomintang. Following WWII, control of Taiwan was given back to the Republic of China. In 1949, the Kuomintang fled to Taiwan while the CCP established a new Chinese state, the People's Republic of China on the mainland, resulting in the formation of modern day Taiwan (Republic of China) and China (People's Republic of China).</p>
+                    <p>The US, who then recognised the Kuomintang as the government of China, deployed forces to the Taiwan Strait to prevent any conflict, and to prevent a communist China from gaining more footing. Further conflict broke out during the First and Second Taiwan Strait Crisis. </p>
+                    <p> In 2016, Tsai Ing-wen from the DPP won the presidential election. Her pro-Taiwanese independence stance resulted in China cutting off diplomatic ties with Taiwan.</p>
+                    <h2 id="China's Grey-zone Tactics"> China's Grey-zone Tactics </h2>
+                    <p> At this point in time, China does not have sufficient amphibious assualt and anti-mine capabilities to invade Taiwan. Rather than a direct military confrontation, China employs grey-zone tactics (in between peace and war) to intimidate Taiwan. These include an espionage and bribery campaign on the Taiwan Armed Forces and sending swarms of sand dredgers to waters around the Matsu Islands (Taiwanese territory).</p>
+                    <p> China has also tried to influence countries who recognise Taiwan (ROC) to switch diplomatic recognition to China (PRC). Since Tsai's election in 2016, seven states had switched diplomatic recognition to China, bringing Taiwan's diplomatic alleis down to 14. The most recent instance happened on 9 Dec 2021, when Nicaragua announced the switch. The embassy was then seized and given to China. </p>
+                    <h3 id="ADIZ incursion"> ADIZ incursion </h3>
+                    <p> The air defense identification zone (ADIZ) is an area of airspace set up by a nation where aircraft are to be identified, tracked and potentially controlled in the interest of national security. In recent years (approx since 2020? idk), the People's Liberation Army (PLA) have deployed aircraft and sent them into Taiwan's ADIZ regularly (almost once per day). In response, Taiwan would issue radio warnings and deploy aircraft for combat air patrol and air defence missile systems to monitor the activities of the PLA aircraft. Such a response by Taiwan has been costly. For instance, in 2020, Taiwan's Minister of National Defense Yen Teh-fa said that the Taiwan Armed Forces had scrambled 2,972 times against PLA aircraft in 2020 at a cost of almost US$900 million. On 29 Mar 2021, Taiwan announced that the Taiwan Air Force would no longer scramble aircraft everytime there was a PLA aircraft incursion to Taiwan's ADIZ, but would instead use ground based missiles to save resources. In Oct 2021, as China celebrated its National Day (1 Oct), approximately 149 PLA sorties (a sortie is basically a misison carried out by an aircraft, in this case the ADIZ incursion) were carried out over four days.</p>
+                    <p> This has put intense pressure on both the Taiwan Air Force and PLA Air Force. Aircraft crashes are common in Taiwan, while the engines of Chinese fighter aircraft have a lifespan of approximately one-fourth that of a US fighter aircraft.</p>
+                    <h2 id="Ex HAN KUANG"> Ex HAN KUANG </h2>
+                    <p> Ex HAN KUANG is an annual military exercise conducted by Taiwan to test its combat readiness in the event of an invasion by China. It is a huge exercise, including emergency landing drills, anti-amphinbious landing drills and IDK man why did i write this got nth to say.</p>
+                    <h2 id="US-Taiwan relations"> US-Taiwan relations </h2>
+                    <p> Although the US adopts a "One-China Policy", it merely <b>acknowledges</b> China's position that there is but "one China and Taiwan is part of China" and has unofficial relations with Taiwan. The US adopts a policy of strategic ambiguity, not directly assuring Taiwan that it would support Taiwan's defence. This deters China from taking overly provocative actions, but discourages Taiwan from brazenly claiming independence without the assurance that the US would come to its defence. The US does sell weapons to Taiwan, which often draws China's ire. Recently in Feb 2022, the US approved a sale of equipment and services to Taiwan to "sustain, maintain and improve" the Patriot missile system. In response, China sanctioned two major arms companies Lockheed Martin and Raytheon Technologies.</p>
+                    <p> Another US interest in Taiwan is its semiconductor industry. The Taiwan Semiconductor Manufacturing Company (TSMC) has a market share of approximately 50% in the global semiconductor market (with Samsung coming in second at just about 17%), making TSMC a major player in global chip supply. The market share increases sharply if we look at chips manufactured with a sub-10nm process, which is used in modern electronics (Apple's M1 chip uses a 5nm process and is manufactured by TSMC) and is also key for modern warfare that is rapidly digitalising. TSMC not only encourages a US defence of Taiwan, but also deters an attack by China, which also relies on TSMC chips. </p>
+                    <p> Lastly, Taiwan is also situated on a strategic location the US calls the First Island Chain (From Japan down to Taiwan, the Philippines and Borneo). By having a chain of US allies in this region, it essentiallys encircles China and prevents China from intercepting any US response coming across the Pacific.</p>
+                    <h2 id="Conscription"> Conscription </h2>
+                    <p> Ok i want to talk about conscription. Due to the tense situation between China and Taiwan, conscription  was introduced in Taiwan in 1951 and all conscripts were to serve for two years. Service time was then decreased gradually over the years, to 14 months, 12 months and currently for those born after 1994, they would only need to serve for four months. Instead of military service, conscripts could also serve in alternate services (police, civil defence, clinics, or even as teachers) or even in governmental or academic research institutions.</p>
+                    <p> However, the effectiveness of just four months of military service has been questioned. After training, their time attached to units is short and they are often not treated seriously by regular personnel, and are seen more as participants of a summer camp. With the increase in tensions following Tsai's election, Taiwan would certainly need to revamp its conscription system to counter China's increased aggression.</p>
                     <h2 id="Additional information">Additional Information</h2>
+                    <li>
+                    <a target="none" href="https://www.reuters.com/investigates/section/taiwan-china/">Reuters Investigates</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://graphics.reuters.com/TAIWAN-CHINA/byvrjrmgnve/">Reuters Graphics</a>
+                    </li>
+                    <li>
+                    <a target="none" href="https://twitter.com/MoNDefense">Taiwan MND twitter</a>
+                    </li>
+                    <h2 id="Quiz">Quiz</h2>
+                    <div class="section">
+                        <hr>
+                        <!-- TODO: Add multiple choice question here -->
+                        <div class="mcq" id="q0">
+                            <h3>How many countries maintain full diplomatic relations with Taiwan?</h3>
+                            <div><button class = "incorrect">7</button></div>
+                            <div><button class = "correct">14</button></div>
+                            <div><button class = "incorrect">21</button></div>
+                            <div><button class = "incorrect">28</button></div>
+                            <p id = "response0"></p>
+                        </div>
+                        <div class="mcq" id="q1">
+                            <h3>What policy does US adopt with respect to Taiwan?</h3>
+                            <div><button class = "incorrect">One-China Principle</button></div>
+                            <div><button class = "correct">Strategic Ambiguity</button></div>
+                            <div><button class = "incorrect">Support Taiwan's Independence</button></div>
+                            <div><button class = "incorrect">All of the above</button></div>
+                            <p id = "response1"></p>
+                        </div>
+                        <div class="mcq" id="q2">
+                            <h3>How long do conscripts serve in the military for in Taiwan?</h3>
+                            <div><button class = "correct">4 months</button></div>
+                            <div><button class = "incorrect">12 months</button></div>
+                            <div><button class = "incorrect">14 months</button></div>
+                            <div><button class = "incorrect">22 months</button></div>
+                            <p id = "response2"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!-- TOC -->
@@ -97,7 +190,16 @@
                     <nav id = "TableOfContents">
                         <ul>
                             <li class="toc-hover"><a href="#Background">Background</a></li>
+                            <li class="toc-hover"><a href="#China's Grey-zone Tactics">China's Grey-zone Tactics</a>
+                                <ul>
+                                    <li><a href="#ADIZ incursion">ADIZ incursion</a></li>
+                                </ul>
+                            </li>
+                            <li class="toc-hover"><a href="#Ex HAN KUANG">Ex HAN KUANG</a></li>
+                            <li class="toc-hover"><a href="#US-Taiwan relations">US-Taiwan relations</a></li>
+                            <li class="toc-hover"><a href="#Conscription">Conscription</a></li>
                             <li class="toc-hover"><a href="#Additional information">Additional information</a></li>
+                            <li class="toc-hover"><a href="#Quiz">Quiz</a></li>
                         </ul>
                     </nav>
                 </div>

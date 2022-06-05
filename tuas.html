@@ -7,6 +7,44 @@
 <html lang="en">
 
 <script>
+//Random function
+    function RandomItem(arr) {
+        const RandomIndex = Math.floor(Math.random()*arr.length);
+        const item = arr[RandomIndex];
+        return item;
+    }
+//Responses
+    const correct_response = ["Nice guess", "Your luck is good you should buy TOTO", "Correct :)", "nubbad nubbad", "wao very nice", "Congrats", "good guess", "nice, you possess basic comprehension and googling abilities"];
+    const incorrect_response = ["You know you can google right", "Did you even try?", "WRONG", "srsly bro?", "u fking bozo", "smh", "try harder", "put in some effort"];
+    document.addEventListener('DOMContentLoaded', function() {
+        let mcq = document.querySelectorAll('.mcq');
+        mcqnumber = mcq.length;
+        for (let j = 0; j < mcqnumber; j++){
+            var param = "q" + j;
+            let correct = document.querySelector('#' + param + ' button.correct');
+            let restwrong = document.querySelectorAll('#' + param + ' button.incorrect');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                correct.style.color = '#efefef';
+                correct.disabled = true;
+                document.querySelector('#response'+ j).innerHTML = RandomItem(correct_response);
+                    for (let i = 0; i < incorrects.length; i++){
+                    restwrong[i].style.backgroundColor = 'red';
+                    restwrong[i].style.color = '#efefef';
+                    restwrong[i].disabled = true;
+                }
+            });
+            let incorrects = document.querySelectorAll('#' + param + ' button.incorrect');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
+                    incorrects[i].style.color = '#efefef';
+                    incorrects[i].disabled = true;
+                    document.querySelector('#response'+ j).innerHTML = RandomItem(incorrect_response);
+                });
+            }
+        }
+    });
 </script>
 
 <head>
@@ -23,7 +61,7 @@
 <!-- Navigation Bar-->
 <div class = "container-xxl">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container-xxl">
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -72,9 +110,9 @@
             </div>
         </div>
     </nav>
-</div class = "container-xxl">
+</div>
 <!-- Body -->
-    <div class = "container-xxl">
+    <div class = "container-xxl body-container">
 <!--Content-->
         <div class = "row">
             <div class = "column content">
@@ -123,6 +161,35 @@
                     <li>
                     <a target="none" href="https://www.facebook.com/MothershipSG/videos/273596940014905/">Video of RSN warning off MV Polaris</a>
                     </li>
+                    <h2 id="Quiz">Quiz</h2>
+                    <div class="section">
+                        <hr>
+                        <!-- TODO: Add multiple choice question here -->
+                        <div class="mcq" id="q0">
+                            <h3>Under UNCLOS, a nation's territorial waters extend up to how far from its coast?</h3>
+                            <div><button class = "incorrect">12km</button></div>
+                            <div><button class = "incorrect">12 miles</button></div>
+                            <div><button class = "correct">12 nautical miles</button></div>
+                            <div><button class = "incorrect">120km</button></div>
+                            <p id = "response0"></p>
+                        </div>
+                        <div class="mcq" id="q1">
+                            <h3>Which of these statements are true?</h3>
+                            <div><button class = "correct">Malaysia and Singapore agreed to suspend overlapping port limits.</button></div>
+                            <div><button class = "incorrect">Malaysia and Singapore agreed to the 1979 line as their territorial waters boundary.</button></div>
+                            <div><button class = "incorrect">Singapore agreed to pause reclamation activities in Tuas.</button></div>
+                            <div><button class = "incorrect">Malaysia and Singapore agreed to the 1979 line as their territorial waters boundary only for western Singapore.</button></div>
+                            <p id = "response1"></p>
+                        </div>
+                        <div class="mcq" id="q2">
+                            <h3>Who was Malaysia's PM during this incident?</h3>
+                            <div><button class = "incorrect">Ismail Sabri Yaakob</button></div>
+                            <div><button class = "correct">Mahathir Mohamad</button></div>
+                            <div><button class = "incorrect">Muhyiddin Yassin</button></div>
+                            <div><button class = "incorrect">Najib Razak</button></div>
+                            <p id = "response2"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!-- TOC -->
@@ -152,6 +219,7 @@
                             </li>
                             <li class="toc-hover"><a href="#Aftermath">Aftermath</a></li>
                             <li class="toc-hover"><a href="#Additional Information">Additional Information</a></li>
+                            <li class="toc-hover"><a href="#Quiz">Quiz</a></li>
                         </ul>
                     </nav>
                 </div>
